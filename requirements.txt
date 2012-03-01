@@ -1,2 +1,2 @@
 Flask==0.8
-pylibmc==1.2.2
+python-memcached==1.48
