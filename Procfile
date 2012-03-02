@@ -1,2 +1,2 @@
-web: newrelic-admin run-program python app.py
+web: python app.py
 #worker: python apps.py

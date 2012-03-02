@@ -1,3 +1,4 @@
 Flask==0.8
 python-memcached==1.48
 pylibmc==1.2.2
+newrelic
