@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-import newrelic.agent
+#import newrelic.agent
 from fetch_data import grs_stock
-
 from flask import Flask
 app = Flask(__name__)
 
-@newrelic.agent.wsgi_application()
+#@newrelic.agent.wsgi_application()
 @app.route('/g/<int:no>')
 def gg(no):
     g = grs_stock(no)
     op = g.serial_price(6)
     return str(g.row_data)
 
-@newrelic.agent.wsgi_application()
+
+#@newrelic.agent.wsgi_application()
 @app.route('/')
 def hello():
     return 'Hello World!!!!!!!!!!!!!'
