@@ -3,7 +3,7 @@
 import os
 #import newrelic.agent
 from fetch_data import grs_stock
-from flask import Flask, flash
+from flask import Flask, flash, url_for
 app = Flask(__name__)
 
 #@newrelic.agent.wsgi_application()
@@ -19,7 +19,8 @@ def hello():
     app.logger.debug('A value for debugging')
     app.logger.warning('A warning occurred (%d apples)', 42)
     app.logger.error('An error occurred')
-    return 'Hello World!!!!!!!!!!!!!'
+    img = url_for('static', filename='img/test1.png')
+    return 'Hello World!!!!!!!!!!!!!<br><img src="%s">' % img
 
 
 if __name__ == '__main__':
