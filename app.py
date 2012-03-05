@@ -4,9 +4,15 @@ import os
 #import newrelic.agent
 from fetch_data import grs_stock
 from flask import Flask, flash, url_for
+from grs import goristock
 app = Flask(__name__)
 
-#@newrelic.agent.wsgi_application()
+@app.route('/gori/<int:no>')
+def gori(no):
+    b = goristock.goristock(no)
+    return "%s" % b.raw_data
+
+
 @app.route('/g/<int:no>')
 def gg(no):
     a = grs_stock(no)
