@@ -3,20 +3,22 @@
 import os
 #import newrelic.agent
 from fetch_data import grs_stock
-from flask import Flask
+from flask import Flask, flash
 app = Flask(__name__)
 
 #@newrelic.agent.wsgi_application()
 @app.route('/g/<int:no>')
 def gg(no):
-    g = grs_stock(no)
-    op = g.serial_price(6)
-    return str(g.row_data)
+    a = grs_stock(no)
+    return "%s<br><br>%s<br><br>%s" % (a.MA(3), a.MA(6), a.MA(18))
 
 
 #@newrelic.agent.wsgi_application()
 @app.route('/')
 def hello():
+    app.logger.debug('A value for debugging')
+    app.logger.warning('A warning occurred (%d apples)', 42)
+    app.logger.error('An error occurred')
     return 'Hello World!!!!!!!!!!!!!'
 
 
