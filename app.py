@@ -19,7 +19,6 @@ def gg(no):
     return "%s<br><br>%s<br><br>%s" % (a.MA(3), a.MA(6), a.MA(18))
 
 
-#@newrelic.agent.wsgi_application()
 @app.route('/')
 def hello():
     app.logger.debug('A value for debugging')
