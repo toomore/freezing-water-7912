@@ -24,7 +24,7 @@
 import os
 try:
   import bmemcached as MEM
-  memcache = MEM.Client((os.environ.get('MEMCACHE_SERVERS'),),
+  memcache = MEM.Client([os.environ.get('MEMCACHE_SERVERS')],
                          os.environ.get('MEMCACHE_USERNAME'),
                          os.environ.get('MEMCACHE_PASSWORD'))
 except:
