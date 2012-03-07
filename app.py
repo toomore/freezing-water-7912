@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 #import newrelic.agent
-from flask import Flask, flash, url_for
+from flask import Flask, flash, url_for, render_template
 from grs import stock
 app = Flask(__name__)
 
@@ -11,10 +11,10 @@ app = Flask(__name__)
 def gg(no):
     g = stock(no)
     sno, name = g.info
-    op = """
-        %s<br><br>%s<br><br>%s<br><br>%s
-        """ % (sno+name, g.MA(3), g.MA(6), g.MA(18))
-    return op
+    op = {}
+    op['title'] = sno+name
+    op['op'] = [g.MA(3), g.MA(6), g.MA(18)]
+    return render_template('grs.htm', op = op)    
 
 
 @app.route('/')
