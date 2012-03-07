@@ -2,21 +2,19 @@
 # -*- coding: utf-8 -*-
 import os
 #import newrelic.agent
-from fetch_data import grs_stock
 from flask import Flask, flash, url_for
-from grs import goristock
+from grs import stock
 app = Flask(__name__)
 
-@app.route('/gori/<int:no>')
-def gori(no):
-    b = goristock.goristock(no)
-    return "%s" % b.raw_data
 
-
-@app.route('/g/<int:no>')
+@app.route('/grs/<int:no>')
 def gg(no):
-    a = grs_stock(no)
-    return "%s<br><br>%s<br><br>%s" % (a.MA(3), a.MA(6), a.MA(18))
+    g = stock(no)
+    sno, name = g.info
+    op = """
+        %s<br><br>%s<br><br>%s<br><br>%s
+        """ % (sno+name, g.MA(3), g.MA(6), g.MA(18))
+    return op
 
 
 @app.route('/')
