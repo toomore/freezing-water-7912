@@ -4,7 +4,7 @@
     <h1>{{ op.title }}</h1>
 </div>
     {% for i,p in op.op%}
-        <div class="well">
+        <div class="well span3">
             <span class="label label-{% if p>0 %}important{% else %}success{% endif %}">{{ p|safe }}</span>
             <br>
             {% for p in i %}
