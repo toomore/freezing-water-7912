@@ -36,7 +36,7 @@ def hello():
     app.logger.error('An error occurred')
     img = url_for('static', filename='img/test1.png')
     op = 'Hello World!!!!!!!!!!!!!<br><img src="{}">'.format(img)
-    return render_template('first.htm', op = op)
+    return render_template('first.htm', c = op)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
