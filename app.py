@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import os
 #import newrelic.agent
-from fabric.api import task
 import requests
 from flask import Flask, flash, url_for, render_template, request
 from grs import stock
@@ -36,10 +35,6 @@ def hello():
     app.logger.error('An error occurred')
     img = url_for('static', filename='img/test1.png')
     return 'Hello World!!!!!!!!!!!!!<br><img src="%s">' % img
-
-@task
-def OOPP():
-    requests.get("http://goristock.appspot.com/m")    
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
