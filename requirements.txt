@@ -3,3 +3,4 @@ python-memcached==1.48
 pymongo==2.1.1
 python-binary-memcached==0.13
 grs==0.0.1a0308
+Fabric
