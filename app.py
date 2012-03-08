@@ -2,22 +2,30 @@
 # -*- coding: utf-8 -*-
 import os
 #import newrelic.agent
-from flask import Flask, flash, url_for, render_template
+from flask import Flask, flash, url_for, render_template, request
 from grs import stock
 app = Flask(__name__)
 
-
-@app.route('/grs/<int:no>')
+@app.route('/grs/', defaults={'no':1201}, methods=['POST', 'GET'])
+@app.route('/grs/<int:no>', methods=['POST', 'GET'])
 def gg(no):
-    g = stock(no)
-    sno, name = g.info
-    op = {}
-    op['rawname'] = g.getRawRowsName
-    op['raw'] = g.raw
-    op['title'] = sno+name
-    op['op'] = [g.MA(3), g.MA(6), g.MA(18)]
-    return render_template('grs.htm', op = op)    
-
+    if request.method == 'GET':
+        g = stock(no)
+        sno, name = g.info
+        op = {}
+        op['rawname'] = g.getRawRowsName
+        op['raw'] = g.raw
+        op['title'] = sno+name
+        op['op'] = [g.MA(3), g.MA(6), g.MA(18)]
+        return render_template('grs.htm', op = op)
+    else:
+        re = []
+        for i in dir(request):
+            re.append((i, getattr(request, i)))
+        op = ''
+        for v in re:
+            op += "{}<br><br>".format(v)
+        return str(op)
 
 @app.route('/')
 def hello():

@@ -5,14 +5,14 @@
 </div>
     {% for i,p in op.op%}
         <div class="well span3">
-            <span class="label label-{% if p>0 %}important{% else %}success{% endif %}">{{ p|safe }}</span>
+            <button class="btn btn-large {% if p > 0 %}btn-danger{% else %}btn-success{% endif %}">{{ p|safe }}</button>
             <br>
             {% for p in i %}
                 <span class="label label-info">{{ p }}</span>
             {% endfor %}
         </div>
     {% endfor %}
-        <table class="table table-striped">
+        <table class="table table-striped table-condensed">
         <tr>{% for i in op.rawname%}<td>{{ i }}</td>{% endfor %}</tr>
         {% for i in op.raw %}
             <tr>{% for v in i %}<td>{{ v }}</td>{% endfor %}</tr>

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>{{ op.title }} - grs OnLine Test Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="台灣股票資料線上擷取測試">
+    <meta name="author" content="Toomore Chiang">
 
     <!-- Le styles -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
@@ -34,12 +34,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">grs online test</a>
+          <a class="brand" href="#"><i class="icon-signal icon-white"> </i>grs online test</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="http://pypi.python.org/pypi/grs">About</a></li>
               <li><a href="#contact">Contact</a></li>
+              <li>
+                <form class="form-search" method="POST" action="/grs/">
+                    <input name="no" type="text" class="input-small search-query">
+                </form>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
