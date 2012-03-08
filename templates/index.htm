@@ -37,12 +37,12 @@
           <a class="brand" href="#"><i class="icon-signal icon-white"> </i>grs online test</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="http://pypi.python.org/pypi/grs">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="/">Home</a></li>
+              <li class="active"><a href="/grs/">Demo</a></li>
+              <li class="active"><a href="http://pypi.python.org/pypi/grs" target="_blank">About</a></li>
               <li>
                 <form class="form-search" method="POST" action="/grs/">
-                    <input name="no" type="text" class="input-small search-query">
+                    <input name="no" type="text" class="input-small search-query" placeholder="{% if op.title %}{{ op.title }}{% else %}股票代碼{% endif %}">
                 </form>
               </li>
             </ul>

@@ -3,7 +3,7 @@
 import os
 #import newrelic.agent
 import requests
-from flask import Flask, flash, url_for, render_template, request
+from flask import Flask, flash, url_for, render_template, request, redirect
 from grs import stock
 app = Flask(__name__)
 
@@ -12,21 +12,22 @@ app = Flask(__name__)
 def gg(no):
     if request.method == 'GET':
         g = stock(no)
-        sno, name = g.info
         op = {}
         op['rawname'] = g.getRawRowsName
         op['raw'] = g.raw
-        op['title'] = sno+name
+        op['title'] = "%s %s" % g.info
         op['op'] = [g.MA(3), g.MA(6), g.MA(18)]
         return render_template('grs.htm', op = op)
     else:
+        '''
         re = []
         for i in dir(request):
             re.append((i, getattr(request, i)))
         op = ''
         for v in re:
             op += "{}<br><br>".format(v)
-        return str(op)
+        return str(op) '''
+        return redirect(url_for('gg', no=request.form['no']))
 
 @app.route('/')
 def hello():
@@ -34,7 +35,8 @@ def hello():
     app.logger.warning('A warning occurred (%d apples)', 42)
     app.logger.error('An error occurred')
     img = url_for('static', filename='img/test1.png')
-    return 'Hello World!!!!!!!!!!!!!<br><img src="%s">' % img
+    op = 'Hello World!!!!!!!!!!!!!<br><img src="{}">'.format(img)
+    return render_template('first.htm', op = op)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
