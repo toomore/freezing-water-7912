@@ -17,7 +17,7 @@ def gg(no):
         op['raw'] = g.raw
         op['title'] = "%s %s" % g.info
         op['op'] = [g.MA(3), g.MA(6), g.MA(18)]
-        return render_template('grs.htm', op = op)
+        return render_template('grs.htm', op = op, title = op['title'])
     else:
         '''
         re = []
@@ -36,7 +36,7 @@ def hello():
     app.logger.error('An error occurred')
     img = url_for('static', filename='img/test1.png')
     op = 'Hello World!!!!!!!!!!!!!<br><img src="{}">'.format(img)
-    return render_template('first.htm', c = op)
+    return render_template('first.htm', c = op, title = '')
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ op.title }} - grs OnLine Test Page</title>
+    <title>{{ title|default('') }} grs OnLine Test Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="台灣股票資料線上擷取測試">
     <meta name="author" content="Toomore Chiang">
@@ -42,7 +42,7 @@
               <li class="active"><a href="http://pypi.python.org/pypi/grs" target="_blank">About</a></li>
               <li>
                 <form class="form-search" method="POST" action="/grs/">
-                    <input name="no" type="text" class="input-small search-query" placeholder="{% if op.title %}{{ op.title }}{% else %}股票代碼{% endif %}">
+                    <input name="no" type="text" class="input-small search-query" placeholder="{% if title %}{{ title }}{% else %}股票代碼{% endif %}">
                 </form>
               </li>
             </ul>
