@@ -12,6 +12,8 @@ def gg(no):
     g = stock(no)
     sno, name = g.info
     op = {}
+    op['rawname'] = g.getRawRowsName
+    op['raw'] = g.raw
     op['title'] = sno+name
     op['op'] = [g.MA(3), g.MA(6), g.MA(18)]
     return render_template('grs.htm', op = op)    

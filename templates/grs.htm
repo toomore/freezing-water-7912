@@ -8,8 +8,14 @@
             <span class="label label-{% if p>0 %}important{% else %}success{% endif %}">{{ p|safe }}</span>
             <br>
             {% for p in i %}
-                <span class="label label-info">{{p}}</span>
+                <span class="label label-info">{{ p }}</span>
             {% endfor %}
         </div>
     {% endfor %}
+        <table class="table table-striped">
+        <tr>{% for i in op.rawname%}<td>{{ i }}</td>{% endfor %}</tr>
+        {% for i in op.raw %}
+            <tr>{% for v in i %}<td>{{ v }}</td>{% endfor %}</tr>
+        {% endfor %}
+        </table>
 {% endblock %}
