@@ -7,3 +7,5 @@ import os
 @roles('OOPP')
 def ff():
     run('python ./rttasks1.py')
+
+ff()
