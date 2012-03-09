@@ -7,4 +7,4 @@ import os
 @hosts(os.environ.get('SCHEDULER_URL'))
 @roles('OOPP')
 def ff():
-    requests.get('http://goristock.appspot.com/m')
+    requests.get('http://plurkii.appspot.com/')
