@@ -8,6 +8,4 @@ import os
 @hosts(os.environ.get('SCHEDULER_URL'))
 @roles('OOPP')
 def ff():
-    run('python ./rttasks1.py')
-
-ff()
+    run('python rttasks1.py')
