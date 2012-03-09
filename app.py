@@ -15,7 +15,7 @@ def gg(no):
         op = {}
         op['rawname'] = g.getRawRowsName
         op['raw'] = g.raw
-        op['title'] = "%s %s" % g.info
+        op['title'] = u'{0[0]} {0[1]}'.format(g.info)
         op['op'] = [g.MA(3), g.MA(6), g.MA(18)]
         return render_template('grs.htm', op = op, title = op['title'])
     else:
@@ -37,6 +37,11 @@ def hello():
     img = url_for('static', filename='img/test1.png')
     op = 'Hello World!!!!!!!!!!!!!<br><img src="{}">'.format(img)
     return render_template('first.htm', c = op, title = '')
+
+@app.errorhandler(404)
+def page_not_found(error):
+    op = error.message + u' 找不到！！！！'
+    return render_template('first.htm', c = op, title = error.message)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
