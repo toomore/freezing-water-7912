@@ -1,0 +1,6 @@
+ABOUT MEMCACHED
+
+import bmemcached as MEM
+memcache = MEM.Client((os.environ.get('MEMCACHE_SERVERS'),),
+                       os.environ.get('MEMCACHE_USERNAME'),
+                       os.environ.get('MEMCACHE_PASSWORD'))
